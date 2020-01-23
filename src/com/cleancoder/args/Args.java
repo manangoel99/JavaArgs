@@ -5,6 +5,7 @@ import java.util.*;
 import static com.cleancoder.args.ArgsException.ErrorCode.*;
 
 public class Args {
+  // Mapping between argument identifier and argument marshaler
   private Map<Character, ArgumentMarshaler> marshalers;
   private Set<Character>                    argsFound;
   private ListIterator<String>              currentArgument;
@@ -18,7 +19,7 @@ public class Args {
   }
 
   private void parseSchema(String schema) throws ArgsException {
-
+    // schema gives the argument identifiers
     for (String element : schema.split(","))
       if (element.length() > 0) {
         parseSchemaElement(element.trim());
@@ -31,7 +32,7 @@ public class Args {
     String  elementTail  = element.substring(1);
 
     validateSchemaElementId(elementId);
-
+    // Add elements to Marshaler map
     if (elementTail.length() == 0) {
       marshalers.put(elementId, new BooleanArgumentMarshaler());
     }
@@ -70,6 +71,7 @@ public class Args {
   }
 
   private void parseArgumentStrings(List<String> argsList) throws ArgsException {
+    // Iterate over list of arguments and parse
     for (currentArgument = argsList.listIterator(); currentArgument.hasNext();) {
       String argString = currentArgument.next();
       if (argString.startsWith("-")) {
@@ -89,14 +91,17 @@ public class Args {
   }
 
   private void parseArgumentCharacter(char argChar) throws ArgsException {
+    // Fetch marshaller corresponding to each identifier
     ArgumentMarshaler m = marshalers.get(argChar);
     if (m == null) {
       throw new ArgsException(UNEXPECTED_ARGUMENT, argChar, null);
-    } else {
+    } 
+    else {
       argsFound.add(argChar);
       try {
         m.set(currentArgument);
-      } catch (ArgsException e) {
+      } 
+      catch (ArgsException e) {
         e.setErrorArgumentId(argChar);
         throw e;
       }

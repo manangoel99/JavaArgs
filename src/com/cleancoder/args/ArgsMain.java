@@ -5,7 +5,9 @@ import java.util.*;
 public class ArgsMain {
   public static void main(String[] args) {
     try {
+      // Declare Schema for arguments
       Args                arg             = new Args("f,s*,n#,a##,p[*],d&", args);
+      // Fetch Each kind of command line argument
       boolean             logging         = arg.getBoolean('f');
       int                 port            = arg.getInt('n');
       String              directory       = arg.getString('s');

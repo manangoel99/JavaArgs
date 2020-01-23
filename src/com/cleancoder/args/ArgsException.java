@@ -3,34 +3,40 @@ package com.cleancoder.args;
 import static com.cleancoder.args.ArgsException.ErrorCode.*;
 
 public class ArgsException extends Exception {
-  private char      errorArgumentId = '\0';
+  /**
+   *
+   */
+  private static final long serialVersionUID = 4211725500805170404L;
+  private char errorArgumentId = '\0';
   private String    errorParameter  = null;
   private ErrorCode errorCode       = OK;
 
   public ArgsException() {}
 
-  public ArgsException(String message) {super(message);}
+  public ArgsException(final String message) {
+    super(message);
+  }
 
-  public ArgsException(ErrorCode errorCode) {
+  public ArgsException(final ErrorCode errorCode) {
     this.errorCode = errorCode;
   }
 
-  public ArgsException(ErrorCode errorCode, String errorParameter) {
-    this.errorCode      = errorCode;
+  public ArgsException(final ErrorCode errorCode, final String errorParameter) {
+    this.errorCode = errorCode;
     this.errorParameter = errorParameter;
   }
 
-  public ArgsException(ErrorCode errorCode, char errorArgumentId, String errorParameter) {
-    this.errorCode        = errorCode;
-    this.errorParameter   = errorParameter;
-    this.errorArgumentId  = errorArgumentId;
+  public ArgsException(final ErrorCode errorCode, final char errorArgumentId, final String errorParameter) {
+    this.errorCode = errorCode;
+    this.errorParameter = errorParameter;
+    this.errorArgumentId = errorArgumentId;
   }
 
   public char getErrorArgumentId() {
     return errorArgumentId;
   }
 
-  public void setErrorArgumentId(char errorArgumentId) {
+  public void setErrorArgumentId(final char errorArgumentId) {
     this.errorArgumentId = errorArgumentId;
   }
 
@@ -38,7 +44,7 @@ public class ArgsException extends Exception {
     return errorParameter;
   }
 
-  public void setErrorParameter(String errorParameter) {
+  public void setErrorParameter(final String errorParameter) {
     this.errorParameter = errorParameter;
   }
 
@@ -46,7 +52,7 @@ public class ArgsException extends Exception {
     return errorCode;
   }
 
-  public void setErrorCode(ErrorCode errorCode) {
+  public void setErrorCode(final ErrorCode errorCode) {
     this.errorCode = errorCode;
   }
 

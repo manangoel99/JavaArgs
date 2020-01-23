@@ -5,18 +5,18 @@ import static com.cleancoder.args.ArgsException.ErrorCode.*;
 import java.util.*;
 
 public class StringArrayArgumentMarshaler implements ArgumentMarshaler {
-  private List<String> strings = new ArrayList<String>();
+  private final List<String> strings = new ArrayList<String>();
 
-  public void set(Iterator<String> currentArgument) throws ArgsException {
+  public void set(final Iterator<String> currentArgument) throws ArgsException {
     try {
       strings.add(currentArgument.next());
     } 
-    catch (NoSuchElementException e) {
+    catch (final NoSuchElementException e) {
       throw new ArgsException(MISSING_STRING);
     }
   }
 
-  public static String[] getValue(ArgumentMarshaler arg_marshaler) {
+  public static String[] getValue(final ArgumentMarshaler arg_marshaler) {
     if (arg_marshaler != null && arg_marshaler instanceof StringArrayArgumentMarshaler)
       return ((StringArrayArgumentMarshaler) arg_marshaler).strings.toArray(new String[0]);
     else
