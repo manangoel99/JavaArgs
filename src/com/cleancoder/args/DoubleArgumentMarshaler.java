@@ -5,7 +5,7 @@ import static com.cleancoder.args.ArgsException.ErrorCode.*;
 import java.util.*;
 
 public class DoubleArgumentMarshaler implements ArgumentMarshaler {
-  private double doubleValue = 0;
+private double doubleValue = 0;
 
   public void set(final Iterator<String> currentArgument) throws ArgsException {
     String parameter = null;
