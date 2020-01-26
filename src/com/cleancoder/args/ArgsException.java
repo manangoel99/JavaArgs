@@ -2,10 +2,20 @@ package com.cleancoder.args;
 
 import static com.cleancoder.args.ArgsException.ErrorCode.*;
 
-public class ArgsException extends Exception {
 /**
- *
+ * <h1>ArgsException</h1>
+ * <p>
+ * The ArgsException class is an extension of
+ * the Exception class pre-built in JAVA to handle
+ * the exceptions that could come up while using
+ * instances of Args class.
+ * </p>
+ * 
+ * @author  Manan Goel
+ * @since   2019-01-27
+ * @version 1.0
  */
+public class ArgsException extends Exception {
 private static final long serialVersionUID = 4211725500805170404L;
 private char errorArgumentId = '\0';
 private String errorParameter  = null;

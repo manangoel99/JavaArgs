@@ -10,8 +10,15 @@ import java.util.Map;
 import static com.cleancoder.args.ArgsException.ErrorCode.*;
 import static org.junit.Assert.*;
 
-
-
+/**
+ * <h1>Args Test</h1>
+ * This Class is used to test multiple scenarios
+ * of arguments and schema being given to the 
+ * Args class
+ * 
+ * @author Manan Goel
+ * {@link Args}
+ */
 public class ArgsTest {
 public static void main(String[] args) {
         Result result = JUnitCore.runClasses(ArgsTest.class);

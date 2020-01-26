@@ -4,8 +4,21 @@ import java.util.*;
 
 import static com.cleancoder.args.ArgsException.ErrorCode.*;
 
+/**
+ * <h1>Args</h1>
+ * <p>
+ * The Args class implements an interface for users 
+ * to provide a schema for command line arguments
+ * with flags and create a map between each identifier
+ * and the corresponding argument provided.
+ * </p>
+ * 
+ * @author  Manan Goel
+ * @version 1.0
+ * @since   2019-01-27
+ */
 public class Args {
-// Mapping between argument identifier and argument marshaler
+
 private Map<Character, ArgumentMarshaler> marshalers;
 private Set<Character>                    argsFound;
 private ListIterator<String>              currentArgument;

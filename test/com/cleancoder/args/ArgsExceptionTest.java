@@ -8,6 +8,18 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
+/**
+ * <h1>Test Args Exceptions</h1>
+ * <p>
+ * The following tests are used to test the
+ * ArgsException class and make sure each error is
+ * raised correctly
+ * </p>
+ * 
+ * @author      Manan Goel
+ * @version     1.0
+ * {@link ArgsException}
+ */
 public class ArgsExceptionTest extends TestCase {
 public static void main(String[] args) {
         Result result = JUnitCore.runClasses(ArgsExceptionTest.class);

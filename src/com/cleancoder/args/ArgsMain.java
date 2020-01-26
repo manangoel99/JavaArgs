@@ -1,12 +1,20 @@
 package com.cleancoder.args;
 
-import java.util.*;
-
+/**
+ * <h1>ArgsMain</h1>
+ * <p>
+ * The ArgsMain class provides an interface between
+ * the command line and the Args class which is used
+ * to parse the command line arguments
+ * </p>
+ * @author  Manan Goel
+ * @version 1.0
+ */
 public class ArgsMain {
 public static void main(String[] args) {
         try {
                 // Declare Schema for arguments
-                Args arg             = new Args("h,f,s*,n#,a##,p[*],d&", args);
+                Args arg = new Args("h,f,s*,n#,a##,p[*],d&", args);
 
                 executeApplication(arg);
 
