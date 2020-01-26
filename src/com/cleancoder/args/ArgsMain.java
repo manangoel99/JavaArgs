@@ -3,49 +3,56 @@ package com.cleancoder.args;
 import java.util.*;
 
 public class ArgsMain {
-  public static void main(String[] args) {
-    try {
-      // Declare Schema for arguments
-      Args                arg             = new Args("f,s*,n#,a##,p[*],d&", args);
-      // Fetch Each kind of command line argument
-      boolean             booleanArg      = arg.getBoolean('f');
-      int                 intArg          = arg.getInt('n');
-      String              stringArg       = arg.getString('s');
-      double              doubleArg       = arg.getDouble('a');
-      String[]            stringArrayArg  = arg.getStringArray('p');
-      Map<String, String> mapArg          = arg.getMap('d');
-      
+public static void main(String[] args) {
+        try {
+                // Declare Schema for arguments
+                Args arg             = new Args("h,f,s*,n#,a##,p[*],d&", args);
 
-      executeApplication(booleanArg, intArg, stringArg, doubleArg, stringArrayArg, mapArg);
+                executeApplication(arg);
 
-    } 
-    catch (ArgsException e) {
-      System.out.printf("Argument error: %s\n", e.errorMessage());
-    }
-  }
+        }
+        catch (ArgsException e) {
+                System.out.printf("Argument error: %s\n", e.errorMessage());
+        }
+}
 
-  private static void executeApplication(
-    boolean   booleanArg,     int                 intArg, 
-    String    stringArg,      double              doubleArg, 
-    String[]  stringArrayArg, Map<String, String> mapArg) {
+private static void executeApplication(Args arg) {
+        // Checks which arguments have been provided and prints accordingly
+        if (arg.has('h')) {
+                System.out.printf("Hi, Welcome to a JavaArgs modification by Manan Goel\n");
+                System.out.printf("Usage:\n");
+                System.out.printf("\t-f For Boolean variables\n");
+                System.out.printf("\t-n For Integer variables\n");
+                System.out.printf("\t-a For Double variables\n");
+                System.out.printf("\t-p For Multiple Strings\n");
+                System.out.printf("\t-d For Maps\n");
+                System.out.printf("\t-s For String\n");
+                System.out.printf("\nSample Command 'java -cp build/jar/args.jar com.cleancoder.args.ArgsMain -f -n 2'\n");
+        }
+        if (arg.has('f')) {
+                System.out.printf("Boolean is %s\n", arg.getBoolean('f'));
+        }
+        if (arg.has('n')) {
+                System.out.printf("Integer is %d\n", arg.getInt('n'));
+        }
+        if (arg.has('s')) {
+                System.out.printf("String is %s\n", arg.getString('s'));
+        }
+        if (arg.has('a')) {
+                System.out.printf("Double is %f\n", arg.getDouble('a'));
+        }
+        if (arg.has('p')) {
+                System.out.println("String array elements are : ");
 
-    System.out.printf("Boolean is %s\n", booleanArg);
-    System.out.printf("Integer is %d\n", intArg);
+                String[] stringArrayArg = arg.getStringArray('p');
 
-    if (!stringArg.isEmpty()) {
-      System.out.printf("String is %s\n", stringArg);
-    }
+                for (int i = 0; i < stringArrayArg.length; i++) {
+                        System.out.printf("\t%s\n", stringArrayArg[i]);
+                }
 
-    System.out.printf("Double is %f\n", doubleArg);
-
-    if (stringArrayArg.length > 0) {
-      System.out.println("String array elements are : ");
-      for (int i = 0; i < stringArrayArg.length; i++) {
-        System.out.printf("%s\n", stringArrayArg[i]);
-      }
-    }
-    if (!mapArg.isEmpty()) {
-      System.out.println(mapArg.toString());
-    }
-  }
+        }
+        if (arg.has('d')) {
+                System.out.println("Map is " + arg.getMap('d').toString());
+        }
+}
 }

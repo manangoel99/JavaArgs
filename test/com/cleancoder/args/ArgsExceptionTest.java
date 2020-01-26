@@ -9,75 +9,81 @@ import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
 public class ArgsExceptionTest extends TestCase {
-        public static void main(String[] args) {
-                Result result = JUnitCore.runClasses(ArgsExceptionTest.class);
+public static void main(String[] args) {
+        Result result = JUnitCore.runClasses(ArgsExceptionTest.class);
 
-                for (Failure failure : result.getFailures()) {
-                        System.out.println(failure.toString());
-                }
-
-                System.out.printf("Ran %d Tests in %d time\n", result.getRunCount(), result.getRunTime());
-                System.out.printf("Passed %d tests\n", result.getRunCount() - result.getIgnoreCount()- result.getFailureCount());
-                System.out.printf("Ignored %d tests\n", result.getFailureCount());
+        for (Failure failure : result.getFailures()) {
+                System.out.println(failure.toString());
         }
 
-        public void testUnexpectedMessage() throws Exception {
-                ArgsException error = new ArgsException(UNEXPECTED_ARGUMENT, 'x', null);
+        System.out.printf("Ran %d Tests in %d time\n", result.getRunCount(), result.getRunTime());
+        System.out.printf("Passed %d tests\n", result.getRunCount() - result.getIgnoreCount()- result.getFailureCount());
+        System.out.printf("Ignored %d tests\n", result.getFailureCount());
+}
 
-                assertEquals("Argument -x unexpected.", error.errorMessage());
-        }
+public void testUnexpectedMessage() throws Exception {
+        ArgsException error = new ArgsException(UNEXPECTED_ARGUMENT, 'x', null);
 
-        public void testMissingStringMessage() throws Exception {
-                ArgsException error = new ArgsException(MISSING_STRING, 'x', null);
+        assertEquals("Argument -x unexpected.", error.errorMessage());
+}
 
-                assertEquals("Could not find string parameter for -x.", error.errorMessage());
-        }
+public void testMissingStringMessage() throws Exception {
+        ArgsException error = new ArgsException(MISSING_STRING, 'x', null);
 
-        public void testInvalidIntegerMessage() throws Exception {
-                ArgsException error = new ArgsException(INVALID_INTEGER, 'x', "Forty two");
+        assertEquals("Could not find string parameter for -x.", error.errorMessage());
+}
 
-                assertEquals("Argument -x expects an integer but was 'Forty two'.", error.errorMessage());
-        }
+public void testInvalidIntegerMessage() throws Exception {
+        ArgsException error = new ArgsException(INVALID_INTEGER, 'x', "Forty two");
 
-        public void testMissingIntegerMessage() throws Exception {
-                ArgsException error = new ArgsException(MISSING_INTEGER, 'x', null);
+        assertEquals("Argument -x expects an integer but was 'Forty two'.", error.errorMessage());
+}
 
-                assertEquals("Could not find integer parameter for -x.", error.errorMessage());
-        }
+public void testMissingIntegerMessage() throws Exception {
+        ArgsException error = new ArgsException(MISSING_INTEGER, 'x', null);
 
-        public void testInvalidDoubleMessage() throws Exception {
-                ArgsException error = new ArgsException(INVALID_DOUBLE, 'x', "Forty two");
+        assertEquals("Could not find integer parameter for -x.", error.errorMessage());
+}
 
-                assertEquals("Argument -x expects a double but was 'Forty two'.", error.errorMessage());
-        }
+public void testInvalidDoubleMessage() throws Exception {
+        ArgsException error = new ArgsException(INVALID_DOUBLE, 'x', "Forty two");
 
-        public void testMissingDoubleMessage() throws Exception {
-                ArgsException error = new ArgsException(MISSING_DOUBLE, 'x', null);
+        assertEquals("Argument -x expects a double but was 'Forty two'.", error.errorMessage());
+}
 
-                assertEquals("Could not find double parameter for -x.", error.errorMessage());
-        }
+public void testMissingDoubleMessage() throws Exception {
+        ArgsException error = new ArgsException(MISSING_DOUBLE, 'x', null);
 
-        public void testMissingMapMessage() throws Exception {
-                ArgsException error = new ArgsException(MISSING_MAP, 'x', null);
+        assertEquals("Could not find double parameter for -x.", error.errorMessage());
+}
 
-                assertEquals("Could not find map string for -x.", error.errorMessage());
-        }
+public void testMissingMapMessage() throws Exception {
+        ArgsException error = new ArgsException(MISSING_MAP, 'x', null);
 
-        public void testMalformedMapMessage() throws Exception {
-                ArgsException error = new ArgsException(MALFORMED_MAP, 'x', null);
+        assertEquals("Could not find map string for -x.", error.errorMessage());
+}
 
-                assertEquals("Map string for -x is not of form k1:v1,k2:v2...", error.errorMessage());
-        }
+public void testMalformedMapMessage() throws Exception {
+        ArgsException error = new ArgsException(MALFORMED_MAP, 'x', null);
 
-        public void testInvalidArgumentName() throws Exception {
-                ArgsException error = new ArgsException(INVALID_ARGUMENT_NAME, '#', null);
+        assertEquals("Map string for -x is not of form k1:v1,k2:v2...", error.errorMessage());
+}
 
-                assertEquals("'#' is not a valid argument name.", error.errorMessage());
-        }
+public void testInvalidArgumentName() throws Exception {
+        ArgsException error = new ArgsException(INVALID_ARGUMENT_NAME, '#', null);
 
-        public void testInvalidFormat() throws Exception {
-                ArgsException error = new ArgsException(INVALID_ARGUMENT_FORMAT, 'x', "$");
+        assertEquals("'#' is not a valid argument name.", error.errorMessage());
+}
 
-                assertEquals("'$' is not a valid argument format.", error.errorMessage());
-        }
+public void testInvalidFormat() throws Exception {
+        ArgsException error = new ArgsException(INVALID_ARGUMENT_FORMAT, 'x', "$");
+
+        assertEquals("'$' is not a valid argument format.", error.errorMessage());
+}
+
+public void testArgWithoutFlag() throws Exception {
+        ArgsException error = new ArgsException(ARG_WITHOUT_FLAG);
+
+        assertEquals("Random Argument was provided without flag specification", error.errorMessage());
+}
 }
