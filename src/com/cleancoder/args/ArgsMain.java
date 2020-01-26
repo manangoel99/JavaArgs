@@ -28,19 +28,24 @@ public class ArgsMain {
     boolean   booleanArg,     int                 intArg, 
     String    stringArg,      double              doubleArg, 
     String[]  stringArrayArg, Map<String, String> mapArg) {
-    
-      System.out.printf(
-      "Boolean is %s, Integer is %d, String is %s, Double is %f\n",
-      booleanArg, 
-      intArg, 
-      stringArg,
-      doubleArg
-    );
 
-    System.out.println("String array elements are : ");
-    for (int i = 0; i < stringArrayArg.length; i++) {
-        System.out.printf("%s\n", stringArrayArg[i]);
+    System.out.printf("Boolean is %s\n", booleanArg);
+    System.out.printf("Integer is %d\n", intArg);
+
+    if (!stringArg.isEmpty()) {
+      System.out.printf("String is %s\n", stringArg);
     }
-    System.out.println(mapArg.toString());
+
+    System.out.printf("Double is %f\n", doubleArg);
+
+    if (stringArrayArg.length > 0) {
+      System.out.println("String array elements are : ");
+      for (int i = 0; i < stringArrayArg.length; i++) {
+        System.out.printf("%s\n", stringArrayArg[i]);
+      }
+    }
+    if (!mapArg.isEmpty()) {
+      System.out.println(mapArg.toString());
+    }
   }
 }
