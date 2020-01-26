@@ -8,15 +8,15 @@ public class ArgsMain {
       // Declare Schema for arguments
       Args                arg             = new Args("f,s*,n#,a##,p[*],d&", args);
       // Fetch Each kind of command line argument
-      boolean             logging         = arg.getBoolean('f');
-      int                 port            = arg.getInt('n');
-      String              directory       = arg.getString('s');
-      double              ip              = arg.getDouble('a');
-      String[]            string_array    = arg.getStringArray('p');
-      Map<String, String> map             = arg.getMap('d');
+      boolean             booleanArg      = arg.getBoolean('f');
+      int                 intArg          = arg.getInt('n');
+      String              stringArg       = arg.getString('s');
+      double              doubleArg       = arg.getDouble('a');
+      String[]            stringArrayArg  = arg.getStringArray('p');
+      Map<String, String> mapArg          = arg.getMap('d');
       
 
-      executeApplication(logging, port, directory, ip, string_array, map);
+      executeApplication(booleanArg, intArg, stringArg, doubleArg, stringArrayArg, mapArg);
 
     } 
     catch (ArgsException e) {
@@ -24,18 +24,23 @@ public class ArgsMain {
     }
   }
 
-  private static void executeApplication(boolean logging, int port, String directory, double ip, String[] string_array, Map<String, String> map) {
-    System.out.printf(
+  private static void executeApplication(
+    boolean   booleanArg,     int                 intArg, 
+    String    stringArg,      double              doubleArg, 
+    String[]  stringArrayArg, Map<String, String> mapArg) {
+    
+      System.out.printf(
       "Boolean is %s, Integer is %d, String is %s, Double is %f\n",
-      logging, 
-      port, 
-      directory,
-      ip
+      booleanArg, 
+      intArg, 
+      stringArg,
+      doubleArg
     );
+
     System.out.println("String array elements are : ");
-    for (int i = 0; i < string_array.length; i++) {
-        System.out.printf("%s\n", string_array[i]);
+    for (int i = 0; i < stringArrayArg.length; i++) {
+        System.out.printf("%s\n", stringArrayArg[i]);
     }
-    System.out.println(map.toString());
+    System.out.println(mapArg.toString());
   }
 }
