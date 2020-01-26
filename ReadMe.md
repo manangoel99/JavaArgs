@@ -79,5 +79,13 @@ Principles of Clean Code
     - Functions have noun/verb names which  reflect their purpose making them self-explanatory
     - Variables have noun names to make sure the person reading the code knows what it is used for.
 - The code also follows the Google JAVA style guide standards of code.
+- There is also JavaDocs for the repository. To check, use google-chrome or firefox
+    ```
+    firefox docs/index.html
+    ```
+    or
+    ```
+    google-chrome-stable docs/index.html
+    ```
 
 -------------------
