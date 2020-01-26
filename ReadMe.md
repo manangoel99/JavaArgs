@@ -87,5 +87,10 @@ Principles of Clean Code
     ```
     google-chrome-stable docs/index.html
     ```
+- The linting of the code was also checked using ```uncrustify```.
 
 -------------------
+Changes to Initial Code
+======================
+- The major change I made to the code given by the TAs was to add more kinds of arguments to the schema.
+- Another change I made was about handling extra arguments. Initially when the user gave extra command arguments along the command line without a flag, the argument was ignored. However, I changed that scenario to raising an exception in this case.
