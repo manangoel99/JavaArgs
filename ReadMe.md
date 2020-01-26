@@ -94,3 +94,4 @@ Changes to Initial Code
 ======================
 - The major change I made to the code given by the TAs was to add more kinds of arguments to the schema.
 - Another change I made was about handling extra arguments. Initially when the user gave extra command arguments along the command line without a flag, the argument was ignored. However, I changed that scenario to raising an exception in this case.
+- Another flag ```-h``` was added to give help messages while running the ```ArgsMain.java``` file.
