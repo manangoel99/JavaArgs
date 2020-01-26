@@ -7,8 +7,9 @@ package com.cleancoder.args;
  * the command line and the Args class which is used
  * to parse the command line arguments
  * </p>
- * @author  Manan Goel
- * @version 1.0
+ * @author      Manan Goel
+ * @version     1.0
+ * @param args  String array of command line arguments
  */
 public class ArgsMain {
 public static void main(String[] args) {

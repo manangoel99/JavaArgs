@@ -11,9 +11,13 @@ import static com.cleancoder.args.ArgsException.ErrorCode.*;
  * instances of Args class.
  * </p>
  * 
- * @author  Manan Goel
- * @since   2019-01-27
- * @version 1.0
+ * @author                  Manan Goel
+ * @since                   2019-01-27
+ * @version                 1.0
+ * @param   Message         Message to be given while raising exception
+ * @param   errorCode       error code for different kinds of exceptions
+ * @param   errorArgumentID
+ * @param   errorParameter
  */
 public class ArgsException extends Exception {
 private static final long serialVersionUID = 4211725500805170404L;

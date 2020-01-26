@@ -13,9 +13,11 @@ import static com.cleancoder.args.ArgsException.ErrorCode.*;
  * and the corresponding argument provided.
  * </p>
  * 
- * @author  Manan Goel
- * @version 1.0
- * @since   2019-01-27
+ * @author            Manan Goel
+ * @version           1.0
+ * @since             2019-01-27
+ * @param  schema     Command Line Argument schema
+ * @param  args       String Array of command line arguments
  */
 public class Args {
 
